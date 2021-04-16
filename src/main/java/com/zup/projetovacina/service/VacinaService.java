@@ -1,7 +1,7 @@
 package com.zup.projetovacina.service;
 
 import com.zup.projetovacina.repository.VacinacaoRepository;
-import com.zup.projetovacina.usuario.Vacina;
+import com.zup.projetovacina.usuario.Vacinacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ public class VacinaService {
     @Autowired                                      //VacinaRepository sendo estanciado pelo Springboot
     private VacinacaoRepository vacinacaoRepository;
 
-    public Vacina cadastrarVacinacao( Vacina vacina ) {
+    public Vacinacao cadastrarVacinacao( Vacinacao vacina ) {
         return vacinacaoRepository.save(vacina);
     }
 }

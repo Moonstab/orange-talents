@@ -1,7 +1,5 @@
 package com.zup.projetovacina.dto;
 
-import com.zup.projetovacina.usuario.Vacina;
-
 import java.time.LocalDate;
 
 public class VacinacaoDTO {
