@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-public class Vacinacao {
+public class Vacina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,7 +15,7 @@ public class Vacinacao {
     private String nomevac;
     private LocalDate dataVac;
 
-    public Vacinacao () {
+    public Vacina () {
     }
 
     public Long getId () {

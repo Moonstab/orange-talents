@@ -1,6 +1,6 @@
 package com.zup.projetovacina.dto;
 
-import com.zup.projetovacina.usuario.Vacinacao;
+import com.zup.projetovacina.usuario.Vacina;
 
 import java.time.LocalDate;
 
@@ -11,6 +11,15 @@ public class VacinacaoDTO {
     private LocalDate dataVac;
 
     public VacinacaoDTO () {
+    }
+
+    public static Vacina converterDtoParaVacinacao ( VacinacaoDTO vacinacaoDTO ) {
+        Vacina vacina = new Vacina();
+        vacina.setDataVac(vacinacaoDTO.getDataVac());
+        vacina.setEmail(vacinacaoDTO.getEmail());
+        vacina.setNomevac(vacinacaoDTO.getNomevac());
+
+        return vacina;
     }
 
     public String getEmail () {
@@ -35,14 +44,5 @@ public class VacinacaoDTO {
 
     public void setDataVac ( LocalDate dataVac ) {
         this.dataVac = dataVac;
-    }
-
-    public static Vacinacao converterDtoParaVacinacao ( VacinacaoDTO vacinacaoDTO ) {
-        Vacinacao vacinacao = new Vacinacao();
-        vacinacao.setDataVac(vacinacaoDTO.getDataVac());
-        vacinacao.setEmail(vacinacaoDTO.getEmail());
-        vacinacao.setNomevac(vacinacaoDTO.getNomevac());
-
-        return vacinacao;
     }
 }
