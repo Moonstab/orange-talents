@@ -1,42 +1,15 @@
-package com.zup.projetovacina.usuario;
+package com.zup.projetovacina.dto;
 
-import javax.persistence.*;
+import com.zup.projetovacina.usuario.Usuario;
+
 import java.time.LocalDate;
 
-@Entity
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class UsuarioDTO {
 
-    @Column(unique = true)//Impede repetição de dados
-    private String email;
-    @Column(unique = true)
     private String cpf;
-
     private String nome;
     private LocalDate datanasc;
-
-
-    public Usuario ( Long id, String email, String cpf, String nome, LocalDate datanasc ) {
-        this.id = id;
-        this.email = email;
-        this.cpf = cpf;
-        this.nome = nome;
-        this.datanasc = datanasc;
-    }
-
-    public Usuario () {
-
-    }
-
-    public Long getId () {
-        return id;
-    }
-
-    public void setId ( Long id ) {
-        this.id = id;
-    }
+    private String email;
 
     public String getEmail () {
         return email;
@@ -68,5 +41,17 @@ public class Usuario {
 
     public void setDatanasc ( LocalDate datanasc ) {
         this.datanasc = datanasc;
+    }
+    //static != exclusivo(não utiliza this.)
+
+    public static Usuario converterDtoParaUsuario ( UsuarioDTO usuarioDTO ) {
+        Usuario usuarioNovo = new Usuario();
+
+        usuarioNovo.setNome(usuarioDTO.getNome());
+        usuarioNovo.setCpf(usuarioDTO.getCpf());
+        usuarioNovo.setEmail(usuarioDTO.getEmail());
+        usuarioNovo.setDatanasc(usuarioDTO.getDatanasc());
+        return usuarioNovo;
+        //usuarioNovo será persistido
     }
 }
