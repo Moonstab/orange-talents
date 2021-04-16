@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class VacinaService {
-    @Autowired //VacinaRepository sendo estanciado pelo Springboot
+    @Autowired                                      //VacinaRepository sendo estanciado pelo Springboot
     private VacinacaoRepository vacinacaoRepository;
 
     public Vacina cadastrarVacinacao( Vacina vacina ) {
