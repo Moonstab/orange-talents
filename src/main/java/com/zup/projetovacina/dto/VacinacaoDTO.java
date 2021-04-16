@@ -1,29 +1,16 @@
-package com.zup.projetovacina.usuario;
+package com.zup.projetovacina.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.zup.projetovacina.usuario.Vacinacao;
+
 import java.time.LocalDate;
 
-@Entity
-public class Vacinacao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class VacinacaoDTO {
+
     private String email;
     private String nomevac;
     private LocalDate dataVac;
 
-    public Vacinacao () {
-    }
-
-    public Long getId () {
-        return id;
-    }
-
-    public void setId ( Long id ) {
-        this.id = id;
+    public VacinacaoDTO () {
     }
 
     public String getEmail () {
@@ -48,5 +35,14 @@ public class Vacinacao {
 
     public void setDataVac ( LocalDate dataVac ) {
         this.dataVac = dataVac;
+    }
+
+    public static Vacinacao converterDtoParaVacinacao ( VacinacaoDTO vacinacaoDTO ) {
+        Vacinacao vacinacao = new Vacinacao();
+        vacinacao.setDataVac(vacinacaoDTO.getDataVac());
+        vacinacao.setEmail(vacinacaoDTO.getEmail());
+        vacinacao.setNomevac(vacinacaoDTO.getNomevac());
+
+        return vacinacao;
     }
 }

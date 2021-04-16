@@ -1,6 +1,10 @@
 package com.zup.projetovacina.usuario;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
@@ -8,26 +12,17 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Email
+    @NotBlank
     @Column(unique = true)//Impede repetição de dados
     private String email;
+    @CPF
     @Column(unique = true)
     private String cpf;
-
     private String nome;
     private LocalDate datanasc;
 
-
-    public Usuario ( Long id, String email, String cpf, String nome, LocalDate datanasc ) {
-        this.id = id;
-        this.email = email;
-        this.cpf = cpf;
-        this.nome = nome;
-        this.datanasc = datanasc;
-    }
-
     public Usuario () {
-
     }
 
     public Long getId () {

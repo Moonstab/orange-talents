@@ -1,16 +1,23 @@
 package com.zup.projetovacina.dto;
 
 import com.zup.projetovacina.usuario.Usuario;
+import org.hibernate.validator.constraints.br.CPF;
 
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 
 public class UsuarioDTO {
 
+    @CPF
+    @Column(unique = true)
     private String cpf;
     private String nome;
     private LocalDate datanasc;
-    private String email;
 
+    @Email
+    @Column(unique = true)
+    private String email;
     public String getEmail () {
         return email;
     }
