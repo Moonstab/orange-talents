@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -11,19 +13,16 @@ public class Vacinacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String email;
-    private String nomevac;
-    private LocalDate dataVac;
+    @NotBlank
+    private String nome;
+    @NotNull
+    private LocalDate dataVacinacao;
 
     public Vacinacao () {
     }
 
-    public Vacinacao ( Long id, String email, String nomevac, LocalDate dataVac ) {
-        this.id = id;
-        this.email = email;
-        this.nomevac = nomevac;
-        this.dataVac = dataVac;
-    }
 
     public Long getId () {
         return id;
@@ -41,19 +40,19 @@ public class Vacinacao {
         this.email = email;
     }
 
-    public String getNomevac () {
-        return nomevac;
+    public String getNome () {
+        return nome;
     }
 
-    public void setNomevac ( String nomevac ) {
-        this.nomevac = nomevac;
+    public void setNome ( String nomevac ) {
+        this.nome = nomevac;
     }
 
-    public LocalDate getDataVac () {
-        return dataVac;
+    public LocalDate getDataVacinacao () {
+        return dataVacinacao;
     }
 
-    public void setDataVac ( LocalDate dataVac ) {
-        this.dataVac = dataVac;
+    public void setDataVacinacao ( LocalDate dataVacinacao ) {
+        this.dataVacinacao = dataVacinacao;
     }
 }

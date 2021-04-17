@@ -2,22 +2,26 @@ package com.zup.projetovacina.dto;
 
 import com.zup.projetovacina.usuario.Vacinacao;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class VacinacaoDTO {
-
+    @NotBlank
     private String email;
-    private String nomevac;
-    private LocalDate dataVac;
+    @NotBlank
+    private String nome;
+    @NotNull
+    private LocalDate data;
 
     public VacinacaoDTO () {
     }
 
     public static Vacinacao converterDtoParaVacinacao ( VacinacaoDTO vacinacaoDTO ) {
         Vacinacao vacina = new Vacinacao();
-        vacina.setDataVac(vacinacaoDTO.getDataVac());
+        vacina.setDataVacinacao(vacinacaoDTO.getData());
         vacina.setEmail(vacinacaoDTO.getEmail());
-        vacina.setNomevac(vacinacaoDTO.getNomevac());
+        vacina.setNome(vacinacaoDTO.getNome());
 
         return vacina;
     }
@@ -30,19 +34,19 @@ public class VacinacaoDTO {
         this.email = email;
     }
 
-    public String getNomevac () {
-        return nomevac;
+    public String getNome () {
+        return nome;
     }
 
-    public void setNomevac ( String nomevac ) {
-        this.nomevac = nomevac;
+    public void setNome ( String nome ) {
+        this.nome = nome;
     }
 
-    public LocalDate getDataVac () {
-        return dataVac;
+    public LocalDate getData () {
+        return data;
     }
 
-    public void setDataVac ( LocalDate dataVac ) {
-        this.dataVac = dataVac;
+    public void setData ( LocalDate data ) {
+        this.data = data;
     }
 }

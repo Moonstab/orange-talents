@@ -3,17 +3,18 @@ package com.zup.projetovacina.dto;
 import com.zup.projetovacina.usuario.Usuario;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 public class UsuarioDTO {
-
+    @NotBlank
     @CPF(message = "CPF inválido")
     private String cpf;
+    @NotBlank
     private String nome;
     private LocalDate datanasc;
-
+    @NotBlank
     @Email(message = "Email inválido")
     private String email;
 

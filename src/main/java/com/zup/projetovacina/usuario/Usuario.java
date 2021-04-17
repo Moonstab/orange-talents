@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -16,10 +17,13 @@ public class Usuario {
     @NotBlank
     @Column(unique = true)
     private String email;
+    @NotBlank
     @CPF
     @Column(unique = true)
     private String cpf;
+    @NotBlank
     private String nome;
+    @NotNull
     private LocalDate datanasc;
 
     public Usuario () {
