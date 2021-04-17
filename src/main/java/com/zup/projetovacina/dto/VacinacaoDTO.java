@@ -1,5 +1,7 @@
 package com.zup.projetovacina.dto;
 
+import com.zup.projetovacina.usuario.Vacinacao;
+
 import java.time.LocalDate;
 
 public class VacinacaoDTO {
@@ -11,8 +13,8 @@ public class VacinacaoDTO {
     public VacinacaoDTO () {
     }
 
-    public static Vacina converterDtoParaVacinacao ( VacinacaoDTO vacinacaoDTO ) {
-        Vacina vacina = new Vacina();
+    public static Vacinacao converterDtoParaVacinacao ( VacinacaoDTO vacinacaoDTO ) {
+        Vacinacao vacina = new Vacinacao();
         vacina.setDataVac(vacinacaoDTO.getDataVac());
         vacina.setEmail(vacinacaoDTO.getEmail());
         vacina.setNomevac(vacinacaoDTO.getNomevac());

@@ -9,15 +9,25 @@ import java.time.LocalDate;
 
 public class UsuarioDTO {
 
-    @CPF
-    @Column(unique = true)
+    @CPF(message = "CPF inválido")
     private String cpf;
     private String nome;
     private LocalDate datanasc;
 
-    @Email
-    @Column(unique = true)
+    @Email(message = "Email inválido")
     private String email;
+
+    public static Usuario converterDtoParaUsuario ( UsuarioDTO usuarioDTO ) {
+        Usuario usuarioNovo = new Usuario();
+
+        usuarioNovo.setNome(usuarioDTO.getNome());
+        usuarioNovo.setCpf(usuarioDTO.getCpf());
+        usuarioNovo.setEmail(usuarioDTO.getEmail());
+        usuarioNovo.setDatanasc(usuarioDTO.getDatanasc());
+        return usuarioNovo;
+
+    }
+
     public String getEmail () {
         return email;
     }
@@ -48,17 +58,5 @@ public class UsuarioDTO {
 
     public void setDatanasc ( LocalDate datanasc ) {
         this.datanasc = datanasc;
-    }
-    //static != exclusivo(não utiliza this.)
-
-    public static Usuario converterDtoParaUsuario ( UsuarioDTO usuarioDTO ) {
-        Usuario usuarioNovo = new Usuario();
-
-        usuarioNovo.setNome(usuarioDTO.getNome());
-        usuarioNovo.setCpf(usuarioDTO.getCpf());
-        usuarioNovo.setEmail(usuarioDTO.getEmail());
-        usuarioNovo.setDatanasc(usuarioDTO.getDatanasc());
-        return usuarioNovo;
-        //usuarioNovo será persistido
     }
 }

@@ -14,7 +14,7 @@ public class Usuario {
     private Long id;
     @Email
     @NotBlank
-    @Column(unique = true)//Impede repetição de dados
+    @Column(unique = true)
     private String email;
     @CPF
     @Column(unique = true)

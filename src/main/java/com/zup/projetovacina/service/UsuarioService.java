@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class UsuarioService {
 
-    @Autowired //injeta UsuarioRepository (classe-interface)
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     public Usuario cadastrarUsuario ( Usuario usuario ) {

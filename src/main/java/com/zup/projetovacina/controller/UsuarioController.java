@@ -4,29 +4,26 @@ import com.zup.projetovacina.dto.UsuarioDTO;
 import com.zup.projetovacina.service.UsuarioService;
 import com.zup.projetovacina.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/api/respostausuario")
+@RequestMapping(value = "/api/usuario")
 public class UsuarioController {
 
-    @Autowired /*injeta a classe UsuarioService*/
-            UsuarioService usuarioService;
-
-    @GetMapping
-    public String verificarFuncionamento () {
-        System.out.println("Estou rodando");
-        return "Cliente";
-    }
+    @Autowired
+    private UsuarioService usuarioService;
 
     @PostMapping
-    public String cadastroUsuario ( @RequestBody UsuarioDTO usuarioDTO ) {
-        System.out.println(usuarioDTO.getCpf());
-        System.out.println(usuarioDTO.getEmail());
-        System.out.println(usuarioDTO.getDatanasc());
-        System.out.println(usuarioDTO.getNome());
-
+    public ResponseEntity<Usuario> cadastroUsuario ( @Valid @RequestBody UsuarioDTO usuarioDTO ) {
         Usuario usuario = UsuarioDTO.converterDtoParaUsuario(usuarioDTO);
-        return "ok";
+        usuario = usuarioService.cadastrarUsuario(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
-}
+   }
